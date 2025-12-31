@@ -5,91 +5,89 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart File Organizer</title>
+  <title>File Organizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans selection:bg-teal-500 selection:text-white">
+<body class="bg-[#f8f9fa] min-h-screen flex items-center justify-center font-sans">
 
-  <div class="container mx-auto px-4 py-12 max-w-3xl">
-
-    <!-- Header -->
-    <header class="text-center mb-12">
-      <h1
-        class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 mb-4">
-        File Organizer
-      </h1>
-      <p class="text-slate-400 text-lg">One-click workspace cleanup.</p>
-    </header>
+  <div class="container mx-auto px-4 max-w-2xl w-full">
 
     <!-- Main Card -->
-    <div class="bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-700">
+    <div
+      class="bg-white rounded-lg shadow-[0_1px_3px_rgba(0,0,0,0.12),0_1px_2px_rgba(0,0,0,0.24)] p-8 md:p-10 border border-transparent hover:shadow-[0_4px_8px_rgba(0,0,0,0.1)] transition-shadow duration-200">
+
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-50 mb-4 text-[#1a73e8]">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+            </path>
+          </svg>
+        </div>
+        <h1 class="text-2xl font-normal text-[#202124] mb-1">File Organizer</h1>
+        <p class="text-[#5f6368] text-sm">Organize your workspace with a single click.</p>
+      </div>
 
       <!-- Target Directory Input -->
-      <div class="mb-8 p-4 bg-slate-900 rounded-xl border border-slate-700">
-        <label class="text-slate-500 text-xs uppercase tracking-wider font-semibold block mb-2">Target Directory</label>
+      <div class="mb-8 relative">
         <div class="relative group">
-          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <svg class="h-5 w-5 text-slate-500 group-focus-within:text-emerald-400 transition-colors" fill="none"
-              viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-            </svg>
-          </div>
           <input type="text" id="source-path-input"
-            class="w-full bg-slate-800 border border-slate-700 text-slate-100 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 block pl-10 p-3 transition-all placeholder-slate-600 font-mono"
-            placeholder="Enter full folder path (e.g., C:/Users/Downloads)" autocomplete="off">
+            class="peer w-full h-14 rounded-[4px] border border-[#dadce0] px-4 pt-4 text-base text-[#202124] placeholder-transparent focus:border-[#1a73e8] focus:outline-none focus:ring-1 focus:ring-[#1a73e8] bg-transparent"
+            placeholder="Path" autocomplete="off">
+          <label for="source-path-input"
+            class="absolute left-3 -top-2.5 bg-white px-1 text-xs text-[#5f6368] transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-[#1a73e8]">
+            Target Directory Path
+          </label>
         </div>
+        <p class="mt-2 text-xs text-[#70757a] ml-1">e.g., C:/Users/Name/Downloads</p>
       </div>
 
       <!-- Action Area -->
-      <div class="flex justify-center mb-8">
+      <div class="flex justify-end mb-8">
         <button id="organize-btn"
-          class="group relative px-8 py-4 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden w-full md:w-auto">
+          class="relative inline-flex items-center justify-center px-6 py-2.5 bg-[#1a73e8] text-white text-sm font-medium rounded hover:bg-[#1557b0] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#1a73e8] shadow-sm transition-colors duration-200 disabled:opacity-60 disabled:cursor-default">
 
-          <div class="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors"></div>
+          <span id="btn-content">Organize Files</span>
 
-          <span id="btn-content" class="relative flex items-center justify-center gap-3 text-lg font-bold text-white">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-              </path>
-            </svg>
-            Organize Files Now
-          </span>
-
-          <span id="btn-loader"
-            class="hidden relative flex items-center justify-center gap-3 text-lg font-bold text-white">
-            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+          <span id="btn-loader" class="hidden flex items-center gap-2">
+            <svg class="animate-spin h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
               <path class="opacity-75" fill="currentColor"
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
               </path>
             </svg>
-            Cleaning...
+            Working...
           </span>
         </button>
       </div>
 
       <!-- Results Console -->
       <div id="results-area" class="hidden">
-        <div class="flex items-center justify-between mb-2">
-          <h3 class="text-slate-300 font-semibold">Activity Log</h3>
-          <span id="move-count"
-            class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">0
-            files moved</span>
-        </div>
+        <div class="border-t border-[#dadce0] pt-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-sm font-medium text-[#202124]">Activity Log</h3>
+            <span id="move-count" class="text-xs text-[#188038] bg-[#e6f4ea] px-2 py-1 rounded font-medium">0
+              moved</span>
+          </div>
 
-        <div
-          class="bg-black/50 rounded-xl p-4 h-64 overflow-y-auto font-mono text-sm border border-slate-700/50 custom-scrollbar">
-          <ul id="log-list" class="space-y-2">
-            <!-- Logs go here -->
-          </ul>
+          <div class="bg-[#f1f3f4] rounded p-4 h-48 overflow-y-auto font-mono text-xs text-[#3c4043]">
+            <ul id="log-list" class="space-y-1.5">
+              <!-- Logs go here -->
+            </ul>
+          </div>
         </div>
       </div>
 
-      <div id="empty-state" class="text-center py-8 text-slate-500 hidden">
-        <p>Directory is already clean!</p>
+      <div id="empty-state" class="hidden text-center py-6 pt-0 border-t border-[#dadce0] mt-6">
+        <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#f1f3f4] mb-3 mt-6">
+          <svg class="w-5 h-5 text-[#5f6368]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+        </div>
+        <p class="text-sm text-[#5f6368]">Everything is already organized!</p>
       </div>
 
     </div>
