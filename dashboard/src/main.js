@@ -3,7 +3,7 @@ import './style.css'
 const organizeBtn = document.getElementById('organize-btn');
 const btnContent = document.getElementById('btn-content');
 const btnLoader = document.getElementById('btn-loader');
-const sourcePathEl = document.getElementById('source-path');
+const sourcePathInput = document.getElementById('source-path-input');
 const resultsArea = document.getElementById('results-area');
 const logList = document.getElementById('log-list');
 const moveCountEl = document.getElementById('move-count');
@@ -11,18 +11,23 @@ const emptyState = document.getElementById('empty-state');
 
 const API_URL = 'http://localhost:8001/api/organize';
 
-// Initial fetch to check path (simulating by valid API call, 
-// though we usually would have a GET endpoint for config.
-// For now, we rely on the button action to reveal the path)
-sourcePathEl.textContent = "Ready to scan...";
-
 organizeBtn.addEventListener('click', async () => {
+  const path = sourcePathInput.value.trim();
+  if (!path) {
+    alert("Please enter a directory path!");
+    return;
+  }
+
   setLoading(true);
   resetUI();
 
   try {
     const response = await fetch(API_URL, {
-      method: 'POST'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ source_path: path })
     });
 
     if (!response.ok) {
@@ -31,9 +36,6 @@ organizeBtn.addEventListener('click', async () => {
     }
 
     const data = await response.json();
-
-    // Update Source Path Display
-    sourcePathEl.textContent = data.source_dir;
 
     handleResults(data);
 
