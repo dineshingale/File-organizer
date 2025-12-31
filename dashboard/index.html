@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart File Organizer</title>
+</head>
+
+<body class="bg-slate-900 text-slate-100 min-h-screen font-sans selection:bg-teal-500 selection:text-white">
+
+  <div class="container mx-auto px-4 py-12 max-w-3xl">
+
+    <!-- Header -->
+    <header class="text-center mb-12">
+      <h1
+        class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 mb-4">
+        File Organizer
+      </h1>
+      <p class="text-slate-400 text-lg">One-click workspace cleanup.</p>
+    </header>
+
+    <!-- Main Card -->
+    <div class="bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-700">
+
+      <!-- Target Directory Display -->
+      <div class="mb-8 p-4 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-between">
+        <div>
+          <span class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Target Directory</span>
+          <p id="source-path" class="text-emerald-400 font-mono mt-1 break-all">Loading...</p>
+        </div>
+        <!-- Status Dot -->
+        <div class="h-3 w-3 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
+      </div>
+
+      <!-- Action Area -->
+      <div class="flex justify-center mb-8">
+        <button id="organize-btn"
+          class="group relative px-8 py-4 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-2xl shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:-translate-y-1 active:translate-y-0 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden w-full md:w-auto">
+
+          <div class="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors"></div>
+
+          <span id="btn-content" class="relative flex items-center justify-center gap-3 text-lg font-bold text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+              </path>
+            </svg>
+            Organize Files Now
+          </span>
+
+          <span id="btn-loader"
+            class="hidden relative flex items-center justify-center gap-3 text-lg font-bold text-white">
+            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+              </path>
+            </svg>
+            Cleaning...
+          </span>
+        </button>
+      </div>
+
+      <!-- Results Console -->
+      <div id="results-area" class="hidden">
+        <div class="flex items-center justify-between mb-2">
+          <h3 class="text-slate-300 font-semibold">Activity Log</h3>
+          <span id="move-count"
+            class="bg-emerald-500/10 text-emerald-400 text-xs px-3 py-1 rounded-full border border-emerald-500/20">0
+            files moved</span>
+        </div>
+
+        <div
+          class="bg-black/50 rounded-xl p-4 h-64 overflow-y-auto font-mono text-sm border border-slate-700/50 custom-scrollbar">
+          <ul id="log-list" class="space-y-2">
+            <!-- Logs go here -->
+          </ul>
+        </div>
+      </div>
+
+      <div id="empty-state" class="text-center py-8 text-slate-500 hidden">
+        <p>Directory is already clean!</p>
+      </div>
+
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
