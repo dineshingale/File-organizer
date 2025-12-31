@@ -1,0 +1,26 @@
+# Automated File Organizer Rules - 2025
+settings:
+  source_dir: "./Downloads_Mock"
+  create_folders: true
+
+categories:
+  Documents:
+    - .pdf
+    - .docx
+    - .txt
+    - .pptx
+  Images:
+    - .jpg
+    - .jpeg
+    - .png
+    - .svg
+    - .gif
+  Media:
+    - .mp3
+    - .mp4
+    - .mov
+  Archives:
+    - .zip
+    - .tar
+    - .gz
+    - .rar
