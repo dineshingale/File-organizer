@@ -83,16 +83,19 @@ function handleResults(data) {
     const isError = index >= moved.length;
     const li = document.createElement('li');
     li.className = isError
-      ? 'text-red-400 border-l-2 border-red-500 pl-3 opacity-0 translate-x-4 transition-all duration-300'
-      : 'text-emerald-400 border-l-2 border-emerald-500 pl-3 opacity-0 translate-x-4 transition-all duration-300';
-    li.textContent = item;
-    logList.appendChild(li);
+      ? 'text-[#d93025] flex items-center gap-2' // Google Red
+      : 'text-[#188038] flex items-center gap-2'; // Google Green
 
-    // Stagger animation
-    setTimeout(() => {
-      li.classList.remove('opacity-0', 'translate-x-4');
-    }, delay);
-    delay += 50;
+    // Add success/error icon
+    const icon = document.createElement('span');
+    icon.innerHTML = isError
+      ? '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+      : '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+
+    li.prepend(icon);
+    li.appendChild(document.createTextNode(item));
+
+    logList.appendChild(li);
   });
 }
 

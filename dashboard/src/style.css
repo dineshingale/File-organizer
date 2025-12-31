@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background-color: #f0fdf4;
-  /* green-50 */
+@layer base {
+  body {
+    @apply bg-[#f8f9fa] text-[#202124];
+    /* Google Base Background & Text */
+    font-family: 'Roboto', 'Segoe UI', sans-serif;
+  }
 }
