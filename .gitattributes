@@ -1,0 +1,2 @@
+# Mark dashboard files as vendored to exclude from language stats
+dashboard/** linguist-vendored
