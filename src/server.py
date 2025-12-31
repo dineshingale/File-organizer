@@ -31,9 +31,12 @@ class OrganizationResult(BaseModel):
     errors: List[str]
     source_dir: str
 
+class OrganizeRequest(BaseModel):
+    source_path: str
+
 @app.post("/api/organize", response_model=OrganizationResult)
-async def organize_files():
-    source_dir = os.getenv("SOURCE_DIRECTORY")
+async def organize_files(request: OrganizeRequest):
+    source_dir = request.source_path
     if not source_dir or not os.path.exists(source_dir):
         raise HTTPException(status_code=400, detail=f"Source directory not found: {source_dir}")
 

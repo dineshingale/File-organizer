@@ -24,14 +24,21 @@
     <!-- Main Card -->
     <div class="bg-slate-800 rounded-3xl p-8 shadow-2xl border border-slate-700">
 
-      <!-- Target Directory Display -->
-      <div class="mb-8 p-4 bg-slate-900 rounded-xl border border-slate-700 flex items-center justify-between">
-        <div>
-          <span class="text-slate-500 text-xs uppercase tracking-wider font-semibold">Target Directory</span>
-          <p id="source-path" class="text-emerald-400 font-mono mt-1 break-all">Loading...</p>
+      <!-- Target Directory Input -->
+      <div class="mb-8 p-4 bg-slate-900 rounded-xl border border-slate-700">
+        <label class="text-slate-500 text-xs uppercase tracking-wider font-semibold block mb-2">Target Directory</label>
+        <div class="relative group">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+            <svg class="h-5 w-5 text-slate-500 group-focus-within:text-emerald-400 transition-colors" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            </svg>
+          </div>
+          <input type="text" id="source-path-input"
+            class="w-full bg-slate-800 border border-slate-700 text-slate-100 text-sm rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 block pl-10 p-3 transition-all placeholder-slate-600 font-mono"
+            placeholder="Enter full folder path (e.g., C:/Users/Downloads)" autocomplete="off">
         </div>
-        <!-- Status Dot -->
-        <div class="h-3 w-3 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]"></div>
       </div>
 
       <!-- Action Area -->
