@@ -9,18 +9,32 @@ categories:
     - .docx
     - .txt
     - .pptx
+    - .xlsx
+    - .csv
+    - .md
+    - .epub
   Images:
     - .jpg
     - .jpeg
     - .png
     - .svg
     - .gif
+    - .webp
+    - .tiff
+    - .bmp
+    - .heic
   Media:
     - .mp3
     - .mp4
     - .mov
+    - .mkv
+    - .avi
+    - .flv
+    - .wav
   Archives:
     - .zip
     - .tar
     - .gz
     - .rar
+    - .7z
+    - .iso
